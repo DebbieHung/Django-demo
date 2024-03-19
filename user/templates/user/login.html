@@ -1,5 +1,15 @@
 {% extends 'base.html' %}
 {% block title %}登入頁面{% endblock %}
+{% block style %}
+<style>
+    .button-style {
+        background-color: coral;
+        border-radius: 12px;
+        width: 100px;
+    }
+</style>
+
+{% endblock %}
 {% block content %}
 <h1>Login</h1>
 <form action="" method="POST">
@@ -9,8 +19,8 @@
     <label for="id-password">密碼</label>
     <input type="text" name="password" id="id-password" /><br />
     <p>
-        <input type="submit" name="login" value="登入"></button>
-        <input type="submit" name="register" value="註冊"></button>
+        <input class="button-style" type="submit" name="login" value="登入"></button>
+        <input class="button-style" type="submit" name="register" value="註冊"></button>
         <button type="reset">清除</button>
     </p>
 </form>
