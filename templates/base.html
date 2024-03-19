@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        #message {
+            color: red
+        }
+
+        body {
+            margin: 0;
+            background-color: rgb(255, 251, 240);
+        }
+
+        #navbar {
+            background-color: orange;
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        #container {
+            text-align: center;
+            margin: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="navbar">
+        {% if user.is_authenticated %}
+        Hi! {{user}} <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </div>
+    <div id="container">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <p id="message">{{message}}</p>
+
+
+</body>
+
+</html>
