@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}代辦事項{% endblock %}
+{% block style %}
+
+{% endblock %}
+{% block content %}
+<h1>Todo</h1>
+{{todo}}
+<p class="date">{{todo.created}} ({{todo.date_completed}})</p>
+<h3>
+    <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
+    {% if todo.important == True %}
+    <span class="important">(重要)</span>
+    {% endif %}
+</h3>
+<p class="text">{{todo.text}}</p>
+
+<a href="{% url 'todo' %}">回首頁</a>
+
+{% endblock %}

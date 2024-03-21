@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}代辦事項首頁{% endblock %}
+{% block title %}首頁{% endblock %}
 {% block style %}
 <style>
     .todo-list {
@@ -27,6 +27,11 @@
     .important {
         color: crimson;
     }
+
+    .com_time {
+        font-size: 12px;
+        color: black;
+    }
 </style>
 
 {% endblock %}
@@ -34,8 +39,15 @@
 <h1>Todo List</h1>
 {% for todo in todos %}
 <div class="todo-list">
-    <p class="date">{{todo.created}} ({{todo.date_completed}})</p>
-    <h3><u>{{todo.title}}</u>
+    <p class="date">{{todo.created}}
+        {% if todo.date_completed != None %}
+
+        <span class="com_time">(完成時間:{{todo.date_completed}})</span>
+
+        {% endif %}
+    </p>
+    <h3>
+        <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
         {% if todo.important == True %}
         <span class="important">(重要)</span>
         {% endif %}
