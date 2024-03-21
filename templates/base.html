@@ -25,6 +25,10 @@
             text-align: center;
             margin: 12px;
         }
+
+        ul {
+            list-style: none;
+        }
     </style>
     {% block style %}
 
@@ -34,7 +38,9 @@
 <body>
     <div id="navbar">
         {% if user.is_authenticated %}
-        Hi! {{user}} <a href="{% url 'logout' %}">Logout</a>
+        Hi! <a href="{% url 'profile'%}">{{user}}</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'todo' %}">Home</a>
         {% else %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'register' %}">Register</a>

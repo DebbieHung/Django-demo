@@ -1,10 +1,50 @@
 {% extends 'base.html' %}
 {% block title %}代辦事項首頁{% endblock %}
 {% block style %}
+<style>
+    .todo-list {
+        background-color: burlywood;
+        margin: 12px auto;
+        width: 600px;
+        height: 200px;
+        border-radius: 6px;
+
+    }
+
+    .date {
+        background-color: chocolate;
+        color: white;
+        border-radius: 6px;
+    }
+
+    .text {
+        background-color: cornsilk;
+        border-radius: 6px;
+        height: 100px;
+        padding: 6px;
+    }
+
+    .important {
+        color: crimson;
+    }
+</style>
 
 {% endblock %}
 {% block content %}
 <h1>Todo List</h1>
+{% for todo in todos %}
+<div class="todo-list">
+    <p class="date">{{todo.created}} ({{todo.date_completed}})</p>
+    <h3><u>{{todo.title}}</u>
+        {% if todo.important == True %}
+        <span class="important">(重要)</span>
+        {% endif %}
+    </h3>
+    <p class="text">{{todo.text}}</p>
+
+
+</div>
+{% endfor %}
 
 
 {% endblock %}

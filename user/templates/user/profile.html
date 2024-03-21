@@ -5,7 +5,7 @@
 <!-- 檢查使用者是否認證過 -->
 {% if user.is_authenticated %}
 <h2>{{user}}</h2>
-<ul>
+<ul style="list-style: none;">
     <li>註冊日期:{{user.date_joined}}</li>
     <li>email:{{user.email}}</li>
     <li>管理員:
