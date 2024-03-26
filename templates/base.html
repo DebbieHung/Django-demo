@@ -29,6 +29,16 @@
         ul {
             list-style: none;
         }
+
+        a {
+            margin-left: 12px;
+        }
+
+        .button-style {
+            background-color: bisque;
+            text-decoration: none;
+            border-radius: 6px;
+        }
     </style>
     {% block style %}
 
@@ -40,7 +50,8 @@
         {% if user.is_authenticated %}
         Hi! <a href="{% url 'profile'%}">{{user}}</a>
         <a href="{% url 'logout' %}">Logout</a>
-        <a href="{% url 'todo' %}">Home</a>
+        <a class="button-style" href="{% url 'todolist' %}">Home</a>
+        <a class="button-style" href="{% url 'create_todo' %}">Create</a>
         {% else %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'register' %}">Register</a>
