@@ -36,10 +36,18 @@
 
 {% endblock %}
 {% block content %}
-<h1>Todo List</h1>
+<h1>
+    {% if completed %}
+    Completed -Todo
+    {% else %}
+    Todo List
+    {% endif %}
+
+</h1>
 {% for todo in todos %}
 <div class="todo-list">
     <p class="date">{{todo.created}}
+        <a href="{% url 'delete_todo' todo.id %}" onclick="return confirmDelete()">刪除</a>
         {% if todo.date_completed != None %}
 
         <span class="com_time">(完成時間:{{todo.date_completed}})</span>
@@ -53,6 +61,7 @@
         {% endif %}
     </h3>
     <p class="text">{{todo.text}}</p>
+
 
 
 </div>

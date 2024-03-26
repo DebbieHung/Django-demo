@@ -52,6 +52,7 @@
         <a href="{% url 'logout' %}">Logout</a>
         <a class="button-style" href="{% url 'todolist' %}">Home</a>
         <a class="button-style" href="{% url 'create_todo' %}">Create</a>
+        <a class="button-style" href="{% url 'completed_todo'%}">Completed</a>
         {% else %}
         <a href="{% url 'login' %}">Login</a>
         <a href="{% url 'register' %}">Register</a>
@@ -66,5 +67,12 @@
 
 
 </body>
+{% block javascript%}
+<script>
+    function confirmDelete() {
+        return confirm("確認刪除嗎?");
+    }
+</script>
+{% endblock %}
 
 </html>
