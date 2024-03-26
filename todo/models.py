@@ -17,5 +17,7 @@ class Todo(models.Model):
     # 關連到User資料表 user_id<=>todo_id;user消失資料一起消失
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    completed = models.BooleanField(default=False)
+
     def __str__(self):
         return f"[{self.created}] {self.title}-({self.user})"

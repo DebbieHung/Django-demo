@@ -5,15 +5,16 @@
 {% endblock %}
 {% block content %}
 <h1>Todo</h1>
-{{todo}}
-<p class="date">{{todo.created}} ({{todo.date_completed}})</p>
-<h3>
-    <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
-    {% if todo.important == True %}
-    <span class="important">(重要)</span>
-    {% endif %}
-</h3>
-<p class="text">{{todo.text}}</p>
+建立時間:{{todo.created}}<br>
+{% if todo.date_completed %}
+完成時間:{{todo.date_completed}}
+{% endif %}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="更新" name="update">
+    <input type="submit" value="刪除" name="delete">
+</form>
 
 <a href="{% url 'todolist' %}">回首頁</a>
 
