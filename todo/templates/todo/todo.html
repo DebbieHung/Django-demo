@@ -4,7 +4,7 @@
 <style>
     .todo-list {
         background-color: burlywood;
-        margin: 12px auto;
+        margin: 36px auto;
         width: 600px;
         height: 200px;
         border-radius: 6px;
@@ -56,7 +56,14 @@
     </h3>
     <p class="text">{{todo.text}}</p>
     <a href="{% url 'delete_todo' todo.id %}" onclick="return confirmDelete()">刪除</a>
+
+    {% if completed %}
+    <a href="{% url 'uncompleted_todo_byid' todo.id %}" onclick="return confirmUnCompleted()">恢復</a>
+
+    {% else %}
     <a href="{% url 'completed_todo_byid' todo.id %}" onclick="return confirmCompleted()">完成</a>
+
+    {% endif %}
 
 
 
