@@ -47,12 +47,6 @@
 {% for todo in todos %}
 <div class="todo-list">
     <p class="date">{{todo.created}}
-        <a href="{% url 'delete_todo' todo.id %}" onclick="return confirmDelete()">刪除</a>
-        {% if todo.date_completed != None %}
-
-        <span class="com_time">(完成時間:{{todo.date_completed}})</span>
-
-        {% endif %}
     </p>
     <h3>
         <a href="{% url 'view_todo' todo.id %}">{{todo.title}}</a>
@@ -61,6 +55,9 @@
         {% endif %}
     </h3>
     <p class="text">{{todo.text}}</p>
+    <a href="{% url 'delete_todo' todo.id %}" onclick="return confirmDelete()">刪除</a>
+    <a href="{% url 'completed_todo_byid' todo.id %}" onclick="return confirmCompleted()">完成</a>
+
 
 
 

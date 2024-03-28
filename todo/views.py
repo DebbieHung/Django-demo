@@ -4,7 +4,19 @@ from .forms import TodoForm
 from datetime import datetime
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
+@login_required
+def completed_todo_byid(request, id):
+    try:
+        todo = Todo.objects.get(id=id)
+        todo.completed = True
+        todo.date_completed = datetime.now()
+        todo.save()
+
+    except Exception as e:
+        print(e)
+    return redirect("todolist")
 
 
 @login_required
@@ -55,7 +67,9 @@ def todolist(request):
     # todos = Todo.objects.all() 這樣無論誰登入都會看到全部人的資料，應該用filter
     todos = None
     if request.user.is_authenticated:
-        todos = Todo.objects.filter(user=request.user).order_by("-created")
+        todos = Todo.objects.filter(user=request.user, completed=False).order_by(
+            "-created"
+        )
 
     return render(request, "todo/todo.html", {"todos": todos})
 
